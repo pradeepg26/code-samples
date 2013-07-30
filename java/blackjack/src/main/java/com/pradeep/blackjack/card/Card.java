@@ -22,7 +22,7 @@ import com.google.common.base.Preconditions;
  *
  * @author pradeepg26
  */
-public class Card {
+class Card implements ICard {
 
   public static final int ACE = 1;
   public static final int JACK = 11;
@@ -37,18 +37,22 @@ public class Card {
     this.rank = rank;
   }
 
+  @Override
   public int getRank() {
     return rank;
   }
 
+  @Override
   public Suit getSuit() {
     return suit;
   }
 
+  @Override
   public int hardValue() {
     return rank;
   }
 
+  @Override
   public int softValue() {
     return rank;
   }
