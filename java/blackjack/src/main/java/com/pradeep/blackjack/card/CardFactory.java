@@ -15,23 +15,23 @@
  */
 package com.pradeep.blackjack.card;
 
+import com.google.common.base.Preconditions;
+
 /**
  *
  * @author pradeepg26
  */
-public interface ICard {
+public class CardFactory {
 
-  public static final int ACE = 1;
-  public static final int JACK = 11;
-  public static final int QUEEN = 12;
-  public static final int KING = 13;
-
-  int getRank();
-
-  Suit getSuit();
-
-  int hardValue();
-
-  int softValue();
-
+  /**
+   *
+   * @param suit
+   * @param rank
+   * @return
+   * @throws IllegalArgumentException
+   */
+  public static ICard newCard(Suit suit, int rank) {
+    Preconditions.checkArgument(rank < 14 && rank > 0, "Rank must be between 1 and 13. Given {}", rank);
+    return null;
+  }
 }

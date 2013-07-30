@@ -28,21 +28,6 @@ public class CardTest {
   public CardTest() {
   }
 
-  @Test(expected = IllegalArgumentException.class)
-  public void testBadRank1() {
-    Card _ = new Card(Suit.CLUBS, 0);
-  }
-
-  @Test(expected = IllegalArgumentException.class)
-  public void testBadRank2() {
-    Card _ = new Card(Suit.CLUBS, -1);
-  }
-
-  @Test(expected = IllegalArgumentException.class)
-  public void testBadRank3() {
-    Card _ = new Card(Suit.CLUBS, 14);
-  }
-
   /**
    * Test of getRank method, of class Card.
    */

@@ -15,8 +15,7 @@
  */
 package com.pradeep.blackjack.card;
 
-import com.google.common.base.Preconditions;
-
+import com.google.common.base.Objects;
 
 /**
  *
@@ -24,15 +23,10 @@ import com.google.common.base.Preconditions;
  */
 class Card implements ICard {
 
-  public static final int ACE = 1;
-  public static final int JACK = 11;
-  public static final int QUEEN = 12;
-  public static final int KING = 13;
   private final Suit suit;
   private final int rank;
 
   Card(Suit suit, int rank) {
-    Preconditions.checkArgument(rank < 14 && rank > 0, "Rank must be between 1 and 13. Given {}", rank);
     this.suit = suit;
     this.rank = rank;
   }
@@ -55,5 +49,33 @@ class Card implements ICard {
   @Override
   public int softValue() {
     return rank;
+  }
+
+  @Override
+  public String toString() {
+    return String.valueOf(suit) + rank;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(suit, rank);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj == null) {
+      return false;
+    }
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
+    final Card other = (Card) obj;
+    if (this.suit != other.suit) {
+      return false;
+    }
+    if (this.rank != other.rank) {
+      return false;
+    }
+    return true;
   }
 }
