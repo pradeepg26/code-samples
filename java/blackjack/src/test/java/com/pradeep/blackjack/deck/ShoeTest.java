@@ -33,8 +33,6 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 import static org.junit.Assert.*;
-import static org.mockito.Matchers.anyList;
-import static org.powermock.api.mockito.PowerMockito.*;
 
 /**
  *
@@ -67,10 +65,9 @@ public class ShoeTest {
     }
   }
 
-//  @Test
+  @Test
   public void testShuffle() {
     PowerMockito.mockStatic(Collections.class);
-    PowerMockito.doCallRealMethod().when(Collections.class);
     Collections.shuffle(Mockito.anyListOf(ICard.class));
 
     Shoe shoe = new Shoe(4);
@@ -81,15 +78,16 @@ public class ShoeTest {
     assertEquals(52 * 4, Iterables.size(shoe)); // Verify size of shoe
   }
 
-//  @Test
+  @Test
   public void testShuffleWithStopDeal() throws Exception {
-    mockStatic(Collections.class);
-    PowerMockito.doCallRealMethod().when(Collections.class);
-    Collections.shuffle(anyList());
+    PowerMockito.mockStatic(Collections.class);
+    Collections.shuffle(Mockito.anyListOf(ICard.class));
+
     Shoe shoe = new Shoe(4, 52); // Stop dealing when 1 deck left
     shoe.shuffle();
-    verifyStatic(); // Verify shuffle was called once
-    Collections.shuffle(anyList());
+
+    PowerMockito.verifyStatic(); // Verify shuffle was called once
+    Collections.shuffle(Mockito.anyListOf(ICard.class));
     assertEquals(52 * 3, Iterables.size(shoe)); // Verify size of shoe
   }
 }
