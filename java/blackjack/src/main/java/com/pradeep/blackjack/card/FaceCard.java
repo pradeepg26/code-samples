@@ -15,29 +15,23 @@
  */
 package com.pradeep.blackjack.card;
 
-import com.google.common.base.Preconditions;
-
 /**
  *
  * @author pradeepg26
  */
-public class CardFactory {
+class FaceCard extends Card {
 
-  /**
-   *
-   * @param suit
-   * @param rank
-   * @return
-   * @throws IllegalArgumentException
-   */
-  public static ICard newCard(Suit suit, int rank) {
-    Preconditions.checkArgument(rank < 14 && rank > 0, "Rank must be between 1 and 13. Given {}", rank);
-    if (rank == 1) {
-      return new AceCard(suit);
-    } else if (rank > 10) {
-      return new FaceCard(suit, rank);
-    } else {
-      return new Card(suit, rank);
-    }
+  FaceCard(Suit suit, int rank) {
+    super(suit, rank);
+  }
+
+  @Override
+  public int hardValue() {
+    return 10;
+  }
+
+  @Override
+  public int softValue() {
+    return 10;
   }
 }

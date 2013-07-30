@@ -15,29 +15,38 @@
  */
 package com.pradeep.blackjack.card;
 
-import com.google.common.base.Preconditions;
+import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 /**
  *
  * @author pradeepg26
  */
-public class CardFactory {
+public class FaceCardTest {
+
+  public FaceCardTest() {
+  }
 
   /**
-   *
-   * @param suit
-   * @param rank
-   * @return
-   * @throws IllegalArgumentException
+   * Test of hardValue method, of class FaceCard.
    */
-  public static ICard newCard(Suit suit, int rank) {
-    Preconditions.checkArgument(rank < 14 && rank > 0, "Rank must be between 1 and 13. Given {}", rank);
-    if (rank == 1) {
-      return new AceCard(suit);
-    } else if (rank > 10) {
-      return new FaceCard(suit, rank);
-    } else {
-      return new Card(suit, rank);
+  @Test
+  public void testHardValue() {
+    for (int i = 11; i < 14; i++) {
+      FaceCard card = new FaceCard(Suit.CLUBS, i);
+      assertEquals(10, card.hardValue());
+    }
+  }
+
+  /**
+   * Test of softValue method, of class FaceCard.
+   */
+  @Test
+  public void testSoftValue() {
+    for (int i = 11; i < 14; i++) {
+      FaceCard card = new FaceCard(Suit.CLUBS, i);
+      assertEquals(10, card.softValue());
     }
   }
 }
