@@ -15,41 +15,28 @@
  */
 package com.pradeep.blackjack.card;
 
-import com.google.common.base.Preconditions;
-
-
 /**
  *
  * @author pradeepg26
  */
-public class Card {
+public enum Suit {
 
-  public static final int ACE = 1;
-  public static final int JACK = 11;
-  public static final int QUEEN = 12;
-  public static final int KING = 13;
-  private final Suit suit;
-  private final int rank;
+  CLUBS('\u2663'),
+  DIAMONDS('\u2666'),
+  HEARTS('\u2665'),
+  SPADES('\u2660');
+  private final char suit;
 
-  Card(Suit suit, int rank) {
-    Preconditions.checkArgument(rank < 14 && rank > 0, "Rank must be between 1 and 13. Given {}", rank);
+  Suit(char suit) {
     this.suit = suit;
-    this.rank = rank;
   }
 
-  public int getRank() {
-    return rank;
-  }
-
-  public Suit getSuit() {
+  public char getSuit() {
     return suit;
   }
 
-  public int hardValue() {
-    return rank;
-  }
-
-  public int softValue() {
-    return rank;
+  @Override
+  public String toString() {
+    return String.valueOf(suit);
   }
 }

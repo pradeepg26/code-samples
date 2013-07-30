@@ -29,23 +29,18 @@ public class CardTest {
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testBadSuit() {
-    Card _ = new Card('c', 10);
-  }
-
-  @Test(expected = IllegalArgumentException.class)
   public void testBadRank1() {
-    Card _ = new Card(Card.CLUBS, 0);
+    Card _ = new Card(Suit.CLUBS, 0);
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void testBadRank2() {
-    Card _ = new Card(Card.CLUBS, -1);
+    Card _ = new Card(Suit.CLUBS, -1);
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void testBadRank3() {
-    Card _ = new Card(Card.CLUBS, 14);
+    Card _ = new Card(Suit.CLUBS, 14);
   }
 
   /**
@@ -54,7 +49,7 @@ public class CardTest {
   @Test
   public void testGetRank() {
     for (int i = 1; i < 14; i++) {
-      Card card = new Card(Card.CLUBS, i);
+      Card card = new Card(Suit.CLUBS, i);
       assertEquals(i, card.getRank());
     }
   }
@@ -64,9 +59,9 @@ public class CardTest {
    */
   @Test
   public void testGetSuit() {
-    for (char c : Card.SUITS) {
-      Card card = new Card(c, 10);
-      assertEquals(c, card.getSuit());
+    for (Suit suit : Suit.values()) {
+      Card card = new Card(suit, 10);
+      assertEquals(suit, card.getSuit());
     }
   }
 
@@ -76,7 +71,7 @@ public class CardTest {
   @Test
   public void testHardValue() {
     for (int i = 1; i < 14; i++) {
-      Card card = new Card(Card.CLUBS, i);
+      Card card = new Card(Suit.CLUBS, i);
       assertEquals(i, card.hardValue());
     }
   }
@@ -87,7 +82,7 @@ public class CardTest {
   @Test
   public void testSoftValue() {
     for (int i = 1; i < 14; i++) {
-      Card card = new Card(Card.CLUBS, i);
+      Card card = new Card(Suit.CLUBS, i);
       assertEquals(i, card.softValue());
     }
   }
