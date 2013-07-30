@@ -45,4 +45,17 @@ public class AceCardTest {
     AceCard instance = new AceCard(Suit.CLUBS);
     assertEquals(11, instance.softValue());
   }
+
+  @Test
+  public void testToString() {
+    AceCard card;
+    card = new AceCard(Suit.CLUBS);
+    assertEquals("\u2663A", card.toString());
+    card = new AceCard(Suit.DIAMONDS);
+    assertEquals("\u2666A", card.toString());
+    card = new AceCard(Suit.HEARTS);
+    assertEquals("\u2665A", card.toString());
+    card = new AceCard(Suit.SPADES);
+    assertEquals("\u2660A", card.toString());
+  }
 }

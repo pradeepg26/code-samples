@@ -49,4 +49,35 @@ public class FaceCardTest {
       assertEquals(10, card.softValue());
     }
   }
+
+  @Test
+  public void testToString() {
+    FaceCard card = new FaceCard(Suit.CLUBS, 11);
+    assertEquals("\u2663J", card.toString());
+    card = new FaceCard(Suit.CLUBS, 12);
+    assertEquals("\u2663Q", card.toString());
+    card = new FaceCard(Suit.CLUBS, 13);
+    assertEquals("\u2663K", card.toString());
+
+    card = new FaceCard(Suit.DIAMONDS, 11);
+    assertEquals("\u2666J", card.toString());
+    card = new FaceCard(Suit.DIAMONDS, 12);
+    assertEquals("\u2666Q", card.toString());
+    card = new FaceCard(Suit.DIAMONDS, 13);
+    assertEquals("\u2666K", card.toString());
+
+    card = new FaceCard(Suit.HEARTS, 11);
+    assertEquals("\u2665J", card.toString());
+    card = new FaceCard(Suit.HEARTS, 12);
+    assertEquals("\u2665Q", card.toString());
+    card = new FaceCard(Suit.HEARTS, 13);
+    assertEquals("\u2665K", card.toString());
+
+    card = new FaceCard(Suit.SPADES, 11);
+    assertEquals("\u2660J", card.toString());
+    card = new FaceCard(Suit.SPADES, 12);
+    assertEquals("\u2660Q", card.toString());
+    card = new FaceCard(Suit.SPADES, 13);
+    assertEquals("\u2660K", card.toString());
+  }
 }

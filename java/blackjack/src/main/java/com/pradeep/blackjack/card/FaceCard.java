@@ -34,4 +34,24 @@ class FaceCard extends Card {
   public int softValue() {
     return 10;
   }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append(this.getSuit());
+    switch (this.getRank()) {
+      case ICard.JACK:
+        sb.append('J');
+        break;
+      case ICard.QUEEN:
+        sb.append('Q');
+        break;
+      case ICard.KING:
+        sb.append('K');
+        break;
+      default:
+        throw new AssertionError("Cannot happen");
+    }
+    return sb.toString();
+  }
 }

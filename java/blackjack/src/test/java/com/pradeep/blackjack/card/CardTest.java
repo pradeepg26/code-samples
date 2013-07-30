@@ -71,4 +71,18 @@ public class CardTest {
       assertEquals(i, card.softValue());
     }
   }
+
+  @Test
+  public void testToString() {
+    for (int i = 2; i < 11; i++) {
+      Card card = new Card(Suit.CLUBS, i);
+      assertEquals("\u2663" + i, card.toString());
+      card = new Card(Suit.DIAMONDS, i);
+      assertEquals("\u2666" + i, card.toString());
+      card = new Card(Suit.HEARTS, i);
+      assertEquals("\u2665" + i, card.toString());
+      card = new Card(Suit.SPADES, i);
+      assertEquals("\u2660" + i, card.toString());
+    }
+  }
 }

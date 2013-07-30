@@ -35,4 +35,8 @@ class AceCard extends Card {
     return 11;
   }
 
+  @Override
+  public String toString() {
+    return this.getSuit() + "A";
+  }
 }
